@@ -6,11 +6,11 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:8080/realms/rentacar-microservice/protocol/openid-connect/certs
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: "prometheus"
+#management:
+  #  endpoints:
+   #   web:
+    #    exposure:
+     #     include: "prometheus"
   datasource:
     username: postgres
     url: jdbc:postgresql://localhost:5432/inventorydb-dev
