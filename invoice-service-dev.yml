@@ -6,6 +6,8 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:8080/realms/rentacar-microservice/protocol/openid-connect/certs
+  zipkin:
+    base-url: http://localhost:9411
   data:
     mongodb:
       database: invoicedb
@@ -21,6 +23,7 @@ spring:
             trusted:
               packages: "*"
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
 eureka:
   client:
     fetch-registry: true
@@ -32,5 +35,20 @@ eureka:
     prefer-ip-address: true
 server:
   port: 0
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
 
 

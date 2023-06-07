@@ -6,11 +6,8 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:8080/realms/rentacar-microservice/protocol/openid-connect/certs
-#management:
-  #  endpoints:
-   #   web:
-    #    exposure:
-     #     include: "prometheus"
+  zipkin:
+    base-url: http://localhost:9411
   datasource:
     username: postgres
     url: jdbc:postgresql://localhost:5432/inventorydb-dev
@@ -36,6 +33,7 @@ spring:
       bootstrap-servers: http://localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 eureka:
   client:
     fetch-registry: true
@@ -47,3 +45,18 @@ eureka:
     prefer-ip-address: true
 server:
   port: 0
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
